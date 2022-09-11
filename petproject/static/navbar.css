@@ -1,0 +1,24 @@
+nav.navbar li{
+    display: block;
+    float: left;
+    color: white;
+    font-weight: bold;
+    padding: 1em;
+}
+
+nav.navbar ul{
+    background-color: #2a0e7f;
+    margin: 0 0 24px 0;
+    padding: 0;
+    width: 100%;
+    height: 3em;
+    text-align: center;
+}
+
+nav.navbar a{
+    text-decoration: none;
+ }
+
+nav.navbar a:visited{
+    color: white;
+}
