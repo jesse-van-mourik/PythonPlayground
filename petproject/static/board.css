@@ -1,0 +1,17 @@
+.cell{
+    width: 20px;
+    height: 20px;
+}
+
+.cell.empty{
+    background-color: #dcdad9;
+}
+
+.cell.wall{
+    background-color: black;
+}
+
+.center-table{
+    display: flex;
+    justify-content: center;
+}
