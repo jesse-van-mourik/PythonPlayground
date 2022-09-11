@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>HEADER</h1>
+
 <table class="center-table">
     {% for row in board %}
     <tr>
         {% for cell in row %}
         <td>
-            {% if cell['comment']=="X" %}
+            {% if cell['comment']=="wall" %}
             <div class="cell wall"></div>
             {% else %}
             <div class="cell empty"></div>
