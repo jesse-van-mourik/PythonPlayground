@@ -9,6 +9,8 @@
         <td>
             {% if cell['comment']=="wall" %}
             <div class="cell wall"></div>
+            {% elif cell['comment']=="start" %}
+            <div class="cell start"></div>
             {% else %}
             <div class="cell empty"></div>
             {% endif %}

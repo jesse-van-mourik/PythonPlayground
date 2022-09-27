@@ -3,10 +3,15 @@
 {% block content %}
 
 <form action="board" method="post">
-    <label for="cellx">Cell X coordinate</label>
-    <input type="number" id="cellx" name="cellx">
-    <label for="celly">Cell Y coordinate</label>
-    <input type="number" id="celly" name="celly">
+    <label for="wall1x">Wall #1 X coordinate</label>
+    <input type="number" id="wall1x" name="wall1x">
+    <label for="wall1y">Wall #1 Y coordinate</label>
+    <input type="number" id="wall1y" name="wall1y">
+    <label for="startx">Start X coordinate</label>
+    <input type="number" id="startx" name="startx">
+    <label for="starty">Start Y coordinate</label>
+    <input type="number" id="starty" name="starty">
+
     <input type="submit" value="Create cell">
 </form>
 {% endblock %}
