@@ -8,7 +8,7 @@
         {% for cell in row %}
         <td>
             {% if cell['comment']=="wall" %}
-            <div class="cell wall"></div>
+            <div class="cell wall"><input class="input-hidden" type="text" name="test" value="{{cell.x}},{{cell.y}}" readonly ></input></div>
             {% elif cell['comment']=="start" %}
             <div class="cell start"></div>
             {% elif cell['comment']=="visited"%}

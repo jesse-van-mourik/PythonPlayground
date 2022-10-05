@@ -20,17 +20,17 @@ def create_cell():
     board = Board(25, 25)
     wall1x = int(request.form['wall1x']) - 1
     wall1y = int(request.form['wall1y']) - 1
-    board.board[wall1x][wall1y].comment = 'wall'
+    board.board[wall1y][wall1x].comment = 'wall'
 
     startx = int(request.form['startx']) - 1
     starty = int(request.form['starty']) - 1
-    board.board[startx][starty].comment = 'start'
+    board.board[starty][startx].comment = 'start'
     return render_template('board.html', board=board.board)
 
 
 @bp.route('/message', methods=("POST",))
 def print_message():
-    print()
+    print(request.form['test'])
     print('button is pressed')
 
 
