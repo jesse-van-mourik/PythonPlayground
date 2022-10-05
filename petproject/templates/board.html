@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<form>
 <table class="center-table">
     {% for row in board %}
     <tr>
@@ -11,6 +11,8 @@
             <div class="cell wall"></div>
             {% elif cell['comment']=="start" %}
             <div class="cell start"></div>
+            {% elif cell['comment']=="visited"%}
+            <div class="cell visited"></div>
             {% else %}
             <div class="cell empty"></div>
             {% endif %}
@@ -19,7 +21,7 @@
     </tr>
     {% endfor %}
 </table>
-<form>
-<button type="submit" formaction="message">CLICK</button>
-    </form>
+
+<button type="submit" formmethod="post" formaction="message">CLICK</button>
+</form>
 {% endblock %}

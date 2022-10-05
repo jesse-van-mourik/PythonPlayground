@@ -16,4 +16,4 @@ class Board:
             self.board.append([])
             for j in range(y):
                 #board[i].append(Cell(i, j))
-                self.board[i].append(Cell(x, y))
+                self.board[i].append(Cell(j, i))

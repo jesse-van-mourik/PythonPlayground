@@ -28,8 +28,9 @@ def create_cell():
     return render_template('board.html', board=board.board)
 
 
-@bp.route('/message')
+@bp.route('/message', methods=("POST",))
 def print_message():
+    print()
     print('button is pressed')
 
 

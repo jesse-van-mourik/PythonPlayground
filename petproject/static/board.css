@@ -3,6 +3,10 @@
     height: 20px;
 }
 
+.cell.visited{
+    background-color: blue;
+}
+
 .cell.empty{
     background-color: #dcdad9;
 }
