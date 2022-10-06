@@ -30,7 +30,9 @@ def create_cell():
 
 @bp.route('/message', methods=("POST",))
 def print_message():
-    print(request.form['test'])
+    for cell in request.form:
+        print(cell)
+
     print('button is pressed')
 
 

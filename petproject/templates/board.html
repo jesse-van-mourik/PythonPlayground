@@ -8,13 +8,21 @@
         {% for cell in row %}
         <td>
             {% if cell['comment']=="wall" %}
-            <div class="cell wall"><input class="input-hidden" type="text" name="test" value="{{cell.x}},{{cell.y}}" readonly ></input></div>
+            <div class="cell wall">
+                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+            </div>
             {% elif cell['comment']=="start" %}
-            <div class="cell start"></div>
+            <div class="cell start">
+                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+            </div>
             {% elif cell['comment']=="visited"%}
-            <div class="cell visited"></div>
+            <div class="cell visited">
+                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+            </div>
             {% else %}
-            <div class="cell empty"></div>
+            <div class="cell empty">
+                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+            </div>
             {% endif %}
         </td>
         {% endfor %}
