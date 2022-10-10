@@ -30,6 +30,6 @@
     {% endfor %}
 </table>
 
-<button type="submit" formmethod="post" formaction="{{ url_for('movement.step_right', original_x=5, original_y=2) }}">CLICK</button>
+<button type="submit" formmethod="post" formaction="{{ url_for('movement.step_right') }}">CLICK</button>
 </form>
 {% endblock %}
