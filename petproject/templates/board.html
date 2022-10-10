@@ -9,19 +9,19 @@
         <td>
             {% if cell['comment']=="wall" %}
             <div class="cell wall">
-                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},wall" readonly>
             </div>
             {% elif cell['comment']=="start" %}
             <div class="cell start">
-                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},start" readonly>
             </div>
             {% elif cell['comment']=="visited"%}
             <div class="cell visited">
-                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},visited" readonly>
             </div>
             {% else %}
             <div class="cell empty">
-                <input class="input-hidden" type="text" name="{{cell.x}},{{cell.y}}" value="{{cell.x}},{{cell.y}}" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},empty" readonly>
             </div>
             {% endif %}
         </td>
@@ -30,6 +30,6 @@
     {% endfor %}
 </table>
 
-<button type="submit" formmethod="post" formaction="message">CLICK</button>
+<button type="submit" formmethod="post" formaction="{{ url_for('movement.step_right', original_x=5, original_y=2) }}">CLICK</button>
 </form>
 {% endblock %}

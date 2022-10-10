@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, make_response, url_for, redirect
-from board import Cell, Board
+from board import Board
 
 
 bp = Blueprint('main', __name__)
@@ -17,7 +17,7 @@ def display_cell_form():
 
 @bp.route('/board', methods=('POST',))
 def create_cell():
-    board = Board(25, 25)
+    board = Board()
     wall1x = int(request.form['wall1x']) - 1
     wall1y = int(request.form['wall1y']) - 1
     board.board[wall1y][wall1x].comment = 'wall'

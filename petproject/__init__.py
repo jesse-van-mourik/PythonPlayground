@@ -19,6 +19,9 @@ def create_app(test_config=None):
     from petproject import main
     app.register_blueprint(main.bp)
 
+    from petproject import movement
+    app.register_blueprint(movement.bp)
+
     return app
 
 
