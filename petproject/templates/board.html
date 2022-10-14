@@ -9,19 +9,23 @@
         <td>
             {% if cell['comment']=="wall" %}
             <div class="cell wall">
-                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},wall" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},wall" readonly>
             </div>
             {% elif cell['comment']=="start" %}
             <div class="cell start">
-                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},start" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},start" readonly>
+            </div>
+            {% elif cell['comment']=="end" %}
+            <div class="cell end">
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},end" readonly>
             </div>
             {% elif cell['comment']=="visited"%}
             <div class="cell visited">
-                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},visited" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},visited" readonly>
             </div>
             {% else %}
             <div class="cell empty">
-                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},empty" readonly>
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},empty" readonly>
             </div>
             {% endif %}
         </td>

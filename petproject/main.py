@@ -25,6 +25,11 @@ def create_cell():
     startx = int(request.form['startx']) - 1
     starty = int(request.form['starty']) - 1
     board.board[starty][startx].comment = 'start'
+
+    endx = int(request.form['endx']) - 1
+    endy = int(request.form['endy']) - 1
+    board.board[endy][endx].comment = 'end'
+
     return render_template('board.html', board=board.board)
 
 

@@ -19,6 +19,10 @@
     background-color: green;
 }
 
+.cell.end{
+    background-color: red;
+}
+
 .center-table{
     display: flex;
     justify-content: center;

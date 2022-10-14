@@ -4,6 +4,8 @@ from board import board_from_form
 bp = Blueprint('movement', __name__)
 
 
+
+
 @bp.route('/right', methods=('POST',))
 def step_right():
     board = board_from_form(request.form)
