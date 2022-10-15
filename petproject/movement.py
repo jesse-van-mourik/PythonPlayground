@@ -19,7 +19,10 @@ def right_until_stopped():
 
 
 def step_right(original_x, original_y, board):
-    if board.board[original_y][original_x + 1].comment == "end":
+    # until end of board is reached or the given finish tile is reached
+    if original_x == len(board.board[1]) - 1 or board.board[original_y][original_x + 1].comment == "end":
         return board
+
+    # visit next tile
     board.board[original_y][original_x + 1].comment = "visited"
     return board
