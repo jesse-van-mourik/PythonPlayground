@@ -34,6 +34,43 @@
     {% endfor %}
 </table>
 
-<button type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">CLICK</button>
+    <table>
+        <tr>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8598</button>
+            </td>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8593</button>
+            </td>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8599</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8592</button>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8594</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8601</button>
+            </td>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8595</button>
+            </td>
+            <td>
+                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.right_until_stopped') }}">&#8600</button>
+            </td>
+        </tr>
+    </table>
+
+
+
 </form>
 {% endblock %}

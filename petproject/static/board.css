@@ -31,3 +31,9 @@
 .input-hidden{
     display: none;
 }
+
+button.directional-button{
+    color: red;
+    height: 30px;
+    width: 30px;
+}

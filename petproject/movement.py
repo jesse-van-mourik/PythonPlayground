@@ -26,3 +26,13 @@ def step_right(original_x, original_y, board):
     # visit next tile
     board.board[original_y][original_x + 1].comment = "visited"
     return board
+
+
+def step_left(original_x, original_y, board):
+    # until end of board is reached or the given finish tile is reached
+    if original_x == 0 or board.board[original_y][original_x - 1].comment == "end":
+        return board
+
+    # visit next tile
+    board.board[original_y][original_x - 1].comment = "visited"
+    return board
