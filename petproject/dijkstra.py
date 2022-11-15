@@ -14,24 +14,34 @@ def start_dijkstra():
     for y in range(0, len(board)):
         for cell in board[y]:
             if cell.comment == 'start':
+                print('start found')
                 dists[cell] = 0
             else:
                 dists[cell] = float('inf')
             # prevs.append(None)
+            if cell.comment == 'end':
+                print('end found #1')
             Q.append(cell)
 
     while len(Q) > 0:
         curr = find_cell_with_min_dist(dists, Q)
+        #if curr.comment == 'end':
+        #    print('end found #2')
+        #    break
+        print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
         Q.remove(curr)
-        print(curr.comment)
+
         neighbors = get_neighbors(curr, board)
         for n in neighbors:
-            if n in Q:
+            if n in Q and n.comment != 'end':
                 alt = dists[curr] + 1
                 if alt < dists[n]:
                     dists[n] = alt
                     n.comment = 'visited'
                     # prevs[n] = alt
+            elif n.comment == 'end':
+                print('end found #3')
+                return render_template('board.html', board=board)
 
     return render_template('board.html', board=board)
 
