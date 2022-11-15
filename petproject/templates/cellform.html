@@ -2,20 +2,36 @@
 
 {% block content %}
 
-<form name="cellform" action="board" method="post" onsubmit="return validateForm()">
+<form name="cellform" class="cellform-table" action="board" method="post" onsubmit="return validateForm()">
     <h2>Start and finish</h2>
 <table>
     <tr>
-    <label for="startx">Start X coordinate</label>
-    <input type="number" id="startx" name="startx" value="3">
-    <label for="starty">Start Y coordinate</label>
-    <input type="number" id="starty" name="starty" value="3">
+        <td>
+            <label for="startx">Start X coordinate</label>
+        </td>
+        <td>
+            <input type="number" id="startx" name="startx" value="3">
+        </td>
+        <td>
+            <label for="starty">Start Y coordinate</label>
+        </td>
+        <td>
+            <input type="number" id="starty" name="starty" value="3">
+        </td>
     </tr>
     <tr>
-    <label for="endx">Finish X coordinate</label>
-    <input type="number" id="endx" name="endx" value="7">
-    <label for="endy">Finish Y coordinate</label>
-    <input type="number" id="endy" name="endy" value="7">
+        <td>
+            <label for="endx">Finish X coordinate</label>
+        </td>
+        <td>
+            <input type="number" id="endx" name="endx" value="7">
+        </td>
+        <td>
+            <label for="endy">Finish Y coordinate</label>
+        </td>
+        <td>
+            <input type="number" id="endy" name="endy" value="7">
+        </td>
     </tr>
 </table>
     <h2>Walls</h2>
@@ -23,162 +39,208 @@
 <table>
     <tr>
         <td>
-    <label for="wall1x">Wall #1 X coordinate</label>
+            <label for="wall1x">Wall #1 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall1x" name="wall1x" value="1">
+            <input type="number" id="wall1x" name="wall1x" value="1">
         </td>
         <td>
-    <label for="wall1y">Wall #1 Y coordinate</label>
+            <label for="wall1y">Wall #1 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall1y" name="wall1y" value="5">
+            <input type="number" id="wall1y" name="wall1y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall2x">Wall #2 X coordinate</label>
+            <label for="wall2x">Wall #2 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall2x" name="wall2x" value="2">
+            <input type="number" id="wall2x" name="wall2x" value="2">
         </td>
         <td>
-    <label for="wall2y">Wall #2 Y coordinate</label>
+            <label for="wall2y">Wall #2 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall2y" name="wall2y" value="5">
+            <input type="number" id="wall2y" name="wall2y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall3x">Wall #3 X coordinate</label>
+            <label for="wall3x">Wall #3 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall3x" name="wall3x" value="3">
+            <input type="number" id="wall3x" name="wall3x" value="3">
         </td>
         <td>
-    <label for="wall3y">Wall #3 Y coordinate</label>
+            <label for="wall3y">Wall #3 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall3y" name="wall3y" value="5">
+            <input type="number" id="wall3y" name="wall3y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall4x">Wall #4 X coordinate</label>
+            <label for="wall4x">Wall #4 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall4x" name="wall4x" value="4">
+            <input type="number" id="wall4x" name="wall4x" value="4">
         </td>
         <td>
-    <label for="wall4y">Wall #4 Y coordinate</label>
+            <label for="wall4y">Wall #4 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall4y" name="wall4y" value="5">
+            <input type="number" id="wall4y" name="wall4y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall5x">Wall #5 X coordinate</label>
+            <label for="wall5x">Wall #5 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall5x" name="wall5x" value="5">
+            <input type="number" id="wall5x" name="wall5x" value="5">
         </td>
         <td>
-    <label for="wall5y">Wall #5 Y coordinate</label>
+            <label for="wall5y">Wall #5 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall5y" name="wall5y" value="5">
+            <input type="number" id="wall5y" name="wall5y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall6x">Wall #6 X coordinate</label>
+            <label for="wall6x">Wall #6 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall6x" name="wall6x" value="6">
+            <input type="number" id="wall6x" name="wall6x" value="6">
         </td>
         <td>
-    <label for="wall6y">Wall #6 Y coordinate</label>
+            <label for="wall6y">Wall #6 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall6y" name="wall6y" value="5">
+            <input type="number" id="wall6y" name="wall6y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall7x">Wall #7 X coordinate</label>
+            <label for="wall7x">Wall #7 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall7x" name="wall7x" value="7">
+            <input type="number" id="wall7x" name="wall7x" value="7">
         </td>
         <td>
-    <label for="wall7y">Wall #7 Y coordinate</label>
+            <label for="wall7y">Wall #7 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall7y" name="wall7y" value="5">
+            <input type="number" id="wall7y" name="wall7y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall8x">Wall #8 X coordinate</label>
+            <label for="wall8x">Wall #8 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall8x" name="wall8x" value="8">
+            <input type="number" id="wall8x" name="wall8x" value="8">
         </td>
         <td>
-    <label for="wall8y">Wall #8 Y coordinate</label>
+            <label for="wall8y">Wall #8 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall8y" name="wall8y" value="5">
+            <input type="number" id="wall8y" name="wall8y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall9x">Wall #9 X coordinate</label>
+            <label for="wall9x">Wall #9 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall9x" name="wall9x" value="9">
+            <input type="number" id="wall9x" name="wall9x" value="9">
         </td>
         <td>
-    <label for="wall9y">Wall #9 Y coordinate</label>
+            <label for="wall9y">Wall #9 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall9y" name="wall9y" value="5">
+            <input type="number" id="wall9y" name="wall9y" value="5">
         </td>
     </tr>
     <tr>
         <td>
-    <label for="wall10x">Wall #10 X coordinate</label>
+            <label for="wall10x">Wall #10 X coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall10x" name="wall10x" value="10">
+            <input type="number" id="wall10x" name="wall10x" value="10">
         </td>
         <td>
-    <label for="wall10y">Wall #10 Y coordinate</label>
+            <label for="wall10y">Wall #10 Y coordinate</label>
         </td>
         <td>
-    <input type="number" id="wall10y" name="wall10y" value="5">
+            <input type="number" id="wall10y" name="wall10y" value="5">
         </td>
     </tr>
-
 </table>
-
     <input type="submit" value="Create cell">
 </form>
-<p class = "errorMessage top-arrow" >123 </p>
+<p class = "errorMessage" >123 </p>
 <script>
     function validateForm(){
-        alert('validating');
-        var wallx = document.forms["cellform"]["wall1x"].value;
-        if(wallx == null || wallx <= 0) {
-            document.getElementsByClassName( "errorMessage" )[0].style.visibility = "visible";
-            document.getElementsByClassName( "errorMessage" )[0].innerHTML = "Please fill out this field";
-            return false;
+        var isValid = true
+        console.log('validating');
+
+        var validWalls = validateWalls();
+        console.log('wall validation result: ' + validWalls);
+
+
+        return validWalls;
+    }
+
+    function displayError(message){
+        document.getElementsByClassName( "errorMessage" )[0].style.visibility = "visible";
+        document.getElementsByClassName( "errorMessage" )[0].innerHTML = message;
+    }
+
+    function highlightBorder(inputField){
+        document.forms["cellform"][inputField].style.border = "2px solid red";
+    }
+
+    function validateWalls(){
+        for(var i = 1; i < 11; i++){
+            var wallx = document.forms["cellform"]["wall" + i.toString() + "x"].value;
+            var wally = document.forms["cellform"]["wall" + i.toString() + "y"].value;
+            // validate x coordinate
+            if(wallx == null || wallx <= 0) {
+                displayError("Please, choose a value ranging from 1 to 25.");
+                highlightBorder("wall" + i.toString() + "x");
+                isValid = false;
+            }
+            // validate y coordinate
+            if(wally == null || wally <= 0){
+                displayError("Please, choose a value ranging from 1 to 25.");
+                highlightBorder("wall" + i.toString() + "y");
+                isValid = false;
+            }
+
+            // validate against start and finish positions
+            var startx = document.forms["cellform"]["startx"].value;
+            var starty = document.forms["cellform"]["starty"].value;
+            if(wally == starty && wallx == startx){
+                displayError("Please, don't place a wall at the starting tile.");
+                highlightBorder("wall" + i.toString() + "x");
+                highlightBorder("wall" + i.toString() + "y");
+                isValid = false;
+            }
+
+            var endx = document.forms["cellform"]["endx"].value;
+            var endy = document.forms["cellform"]["endy"].value;
+            if(wally == endy && wallx == endx){
+                displayError("Please, don't place a wall at the finishing tile.");
+                highlightBorder("wall" + i.toString() + "x");
+                highlightBorder("wall" + i.toString() + "y");
+                isValid = false;
+            }
+
+
         }
-        else{
-        return true;
-        }
-        }
+        return isValid;
+    }
 </script>
 {% endblock %}
