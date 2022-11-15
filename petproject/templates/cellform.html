@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="board" method="post">
+<form name="cellform" action="board" method="post" onsubmit="return validateForm()">
     <h2>Start and finish</h2>
 <table>
     <tr>
@@ -166,4 +166,19 @@
 
     <input type="submit" value="Create cell">
 </form>
+<p class = "errorMessage top-arrow" >123 </p>
+<script>
+    function validateForm(){
+        alert('validating');
+        var wallx = document.forms["cellform"]["wall1x"].value;
+        if(wallx == null || wallx <= 0) {
+            document.getElementsByClassName( "errorMessage" )[0].style.visibility = "visible";
+            document.getElementsByClassName( "errorMessage" )[0].innerHTML = "Please fill out this field";
+            return false;
+        }
+        else{
+        return true;
+        }
+        }
+</script>
 {% endblock %}
