@@ -8,7 +8,7 @@ bp = Blueprint('dijkstra', __name__)
 def start_dijkstra():
     board = board_from_form(request.form).board
     dists = {}
-    # prevs = []
+    prevs = {}
     Q = []
 
     for y in range(0, len(board)):
@@ -18,7 +18,9 @@ def start_dijkstra():
                 dists[cell] = 0
             else:
                 dists[cell] = float('inf')
-            # prevs.append(None)
+
+            prevs[cell] = None
+
             if cell.comment == 'end':
                 print('end found #1')
             Q.append(cell)
@@ -38,12 +40,24 @@ def start_dijkstra():
                 if alt < dists[n]:
                     dists[n] = alt
                     n.comment = 'visited'
-                    # prevs[n] = alt
+                    prevs[n] = curr
             elif n.comment == 'end':
                 print('end found #3')
+                prevs[n] = curr
+                update_shortest_path(prevs, n)
                 return render_template('board.html', board=board)
 
     return render_template('board.html', board=board)
+
+
+def update_shortest_path(prevs, target):
+    path = []
+    while target is not None:
+        print('SHORTEST')
+        if target.comment != 'end' and target.comment != 'start':
+            target.comment = 'shortest'
+        path.insert(0, target)
+        target = prevs[target]
 
 
 def find_cell_with_min_dist(dists, Q):

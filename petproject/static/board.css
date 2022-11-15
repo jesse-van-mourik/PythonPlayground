@@ -3,6 +3,10 @@
     height: 20px;
 }
 
+.cell.shortest{
+    background-color: #add8e6;
+}
+
 .cell.visited{
     background-color: blue;
 }

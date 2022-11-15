@@ -23,6 +23,10 @@
             <div class="cell visited">
                 <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},visited" readonly>
             </div>
+            {% elif cell['comment']=="shortest"%}
+            <div class="cell shortest">
+                <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},visited" readonly>
+            </div>
             {% else %}
             <div class="cell empty">
                 <input class="input-hidden" type="text" name="{{cell.y}},{{cell.x}}" label="{{cell.y}},{{cell.x}}" value="{{cell.y}},{{cell.x}},empty" readonly>
