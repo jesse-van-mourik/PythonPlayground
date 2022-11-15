@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
-<title>{% block title %}{% endblock %} Python Playground</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='board.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='cellform.css') }}">
-<link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='board.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cellform.css') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<title>{% block title %}Python Playground{% endblock %} </title>
 <nav class="navbar">
     <ul>
         <li><a href="{{ url_for('main.display_cell_form') }}">Config cells</a></li>
