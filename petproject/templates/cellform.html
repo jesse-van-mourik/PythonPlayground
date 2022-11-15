@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<form name="cellform" class="cellform-table" action="board" method="post" onsubmit="return validateForm()">
-    <h2>Start and finish</h2>
-<table>
+<form name="cellform" class="cellform-form" action="board" method="post" onsubmit="return validateForm()">
+    <h3>Start and finish</h3>
+<table class="cellform-table">
     <tr>
         <td>
             <label for="startx">Start X coordinate</label>
@@ -34,9 +34,10 @@
         </td>
     </tr>
 </table>
-    <h2>Walls</h2>
-    <p>Specify the position of up to 10 wall elements</p>
-<table>
+    <br>
+    <h3>Walls</h3>
+    <p><i>Specify the position of all 10 wall elements</i></p>
+<table class="cellform-table">
     <tr>
         <td>
             <label for="wall1x">Wall #1 X coordinate</label>
@@ -189,8 +190,13 @@
         var validWalls = validateWalls();
         console.log('wall validation result: ' + validWalls);
 
+        var validStart = validateStart();
+        console.log('start validation result: ' + validStart);
 
-        return validWalls;
+        var validEnd = validateEnd();
+        console.log('end validation result: ' + validEnd);
+
+        return validWalls && validStart && validEnd;
     }
 
     function displayError(message){
@@ -202,16 +208,71 @@
         document.forms["cellform"][inputField].style.border = "2px solid red";
     }
 
+    function validateStart(){
+        isValid = true;
+        var startx = document.forms["cellform"]["startx"].value;
+        var starty = document.forms["cellform"]["starty"].value;
+
+        if(startx == null || startx <= 0) {
+            displayError("Please, choose a value ranging from 1 to 25.");
+            highlightBorder("startx");
+            isValid = false;
+            }
+
+        if(starty == null || starty <= 0) {
+            displayError("Please, choose a value ranging from 1 to 25.");
+            highlightBorder("starty");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+
+    function validateEnd(){
+        isValid = true;
+        var endx = document.forms["cellform"]["endx"].value;
+        var endy = document.forms["cellform"]["endy"].value;
+
+        if(endx == null || endx <= 0) {
+            displayError("Please, choose a value ranging from 1 to 25.");
+            highlightBorder("endx");
+            isValid = false;
+            }
+
+        if(endy == null || endy <= 0) {
+            displayError("Please, choose a value ranging from 1 to 25.");
+            highlightBorder("endy");
+            isValid = false;
+        }
+
+        var startx = document.forms["cellform"]["startx"].value;
+        var starty = document.forms["cellform"]["starty"].value;
+
+        if(endy == starty && endx == startx){
+            displayError("Please, don't place the finish at the starting tile.");
+            highlightBorder("endx");
+            highlightBorder("endy");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
     function validateWalls(){
+        isValid = true;
+
         for(var i = 1; i < 11; i++){
             var wallx = document.forms["cellform"]["wall" + i.toString() + "x"].value;
             var wally = document.forms["cellform"]["wall" + i.toString() + "y"].value;
+
             // validate x coordinate
             if(wallx == null || wallx <= 0) {
                 displayError("Please, choose a value ranging from 1 to 25.");
                 highlightBorder("wall" + i.toString() + "x");
                 isValid = false;
             }
+
             // validate y coordinate
             if(wally == null || wally <= 0){
                 displayError("Please, choose a value ranging from 1 to 25.");
@@ -222,6 +283,7 @@
             // validate against start and finish positions
             var startx = document.forms["cellform"]["startx"].value;
             var starty = document.forms["cellform"]["starty"].value;
+
             if(wally == starty && wallx == startx){
                 displayError("Please, don't place a wall at the starting tile.");
                 highlightBorder("wall" + i.toString() + "x");
@@ -237,8 +299,6 @@
                 highlightBorder("wall" + i.toString() + "y");
                 isValid = false;
             }
-
-
         }
         return isValid;
     }
