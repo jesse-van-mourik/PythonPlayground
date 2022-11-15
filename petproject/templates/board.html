@@ -38,41 +38,7 @@
     {% endfor %}
 </table>
 
-    <table>
-        <tr>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_up_left') }}">&#8598</button>
-            </td>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_up') }}">&#8593</button>
-            </td>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_up_right') }}">&#8599</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_left') }}">&#8592</button>
-            </td>
-            <td>
-                <button type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">GO!</button>
-            </td>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_right') }}">&#8594</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_down_left') }}">&#8601</button>
-            </td>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_down') }}">&#8595</button>
-            </td>
-            <td>
-                <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_down_right') }}">&#8600</button>
-            </td>
-        </tr>
-    </table>
+    <button type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">GO!</button>
 
 
 
