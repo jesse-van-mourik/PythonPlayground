@@ -3,18 +3,166 @@
 {% block content %}
 
 <form action="board" method="post">
-    <label for="wall1x">Wall #1 X coordinate</label>
-    <input type="number" id="wall1x" name="wall1x" value="1">
-    <label for="wall1y">Wall #1 Y coordinate</label>
-    <input type="number" id="wall1y" name="wall1y" value="2">
+    <h2>Start and finish</h2>
+<table>
+    <tr>
     <label for="startx">Start X coordinate</label>
     <input type="number" id="startx" name="startx" value="3">
     <label for="starty">Start Y coordinate</label>
-    <input type="number" id="starty" name="starty" value="4">
+    <input type="number" id="starty" name="starty" value="3">
+    </tr>
+    <tr>
     <label for="endx">Finish X coordinate</label>
-    <input type="number" id="endx" name="endx" value="5">
+    <input type="number" id="endx" name="endx" value="7">
     <label for="endy">Finish Y coordinate</label>
-    <input type="number" id="endy" name="endy" value="6">
+    <input type="number" id="endy" name="endy" value="7">
+    </tr>
+</table>
+    <h2>Walls</h2>
+    <p>Specify the position of up to 10 wall elements</p>
+<table>
+    <tr>
+        <td>
+    <label for="wall1x">Wall #1 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall1x" name="wall1x" value="1">
+        </td>
+        <td>
+    <label for="wall1y">Wall #1 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall1y" name="wall1y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall2x">Wall #2 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall2x" name="wall2x" value="2">
+        </td>
+        <td>
+    <label for="wall2y">Wall #2 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall2y" name="wall2y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall3x">Wall #3 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall3x" name="wall3x" value="3">
+        </td>
+        <td>
+    <label for="wall3y">Wall #3 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall3y" name="wall3y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall4x">Wall #4 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall4x" name="wall4x" value="4">
+        </td>
+        <td>
+    <label for="wall4y">Wall #4 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall4y" name="wall4y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall5x">Wall #5 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall5x" name="wall5x" value="5">
+        </td>
+        <td>
+    <label for="wall5y">Wall #5 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall5y" name="wall5y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall6x">Wall #6 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall6x" name="wall6x" value="6">
+        </td>
+        <td>
+    <label for="wall6y">Wall #6 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall6y" name="wall6y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall7x">Wall #7 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall7x" name="wall7x" value="7">
+        </td>
+        <td>
+    <label for="wall7y">Wall #7 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall7y" name="wall7y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall8x">Wall #8 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall8x" name="wall8x" value="8">
+        </td>
+        <td>
+    <label for="wall8y">Wall #8 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall8y" name="wall8y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall9x">Wall #9 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall9x" name="wall9x" value="9">
+        </td>
+        <td>
+    <label for="wall9y">Wall #9 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall9y" name="wall9y" value="5">
+        </td>
+    </tr>
+    <tr>
+        <td>
+    <label for="wall10x">Wall #10 X coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall10x" name="wall10x" value="10">
+        </td>
+        <td>
+    <label for="wall10y">Wall #10 Y coordinate</label>
+        </td>
+        <td>
+    <input type="number" id="wall10y" name="wall10y" value="5">
+        </td>
+    </tr>
+
+</table>
 
     <input type="submit" value="Create cell">
 </form>

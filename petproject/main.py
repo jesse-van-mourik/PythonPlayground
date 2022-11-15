@@ -18,9 +18,12 @@ def display_cell_form():
 @bp.route('/board', methods=('POST',))
 def create_cell():
     board = Board()
-    wall1x = int(request.form['wall1x']) - 1
-    wall1y = int(request.form['wall1y']) - 1
-    board.board[wall1y][wall1x].comment = 'wall'
+    for i in range(1, 11):
+        key_x = 'wall' + str(i) + 'x'
+        key_y = 'wall' + str(i) + 'y'
+        wall_x = int(request.form[key_x]) - 1
+        wall_y = int(request.form[key_y]) - 1
+        board.board[wall_y][wall_x].comment = 'wall'
 
     startx = int(request.form['startx']) - 1
     starty = int(request.form['starty']) - 1

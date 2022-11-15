@@ -8,8 +8,8 @@ bp = Blueprint('dijkstra', __name__)
 def start_dijkstra():
     board = board_from_form(request.form).board
     dists = {}
-    prevs = {}
-    Q = []
+    prevs = {}  # keeps track of the shortest path
+    q = []
 
     for y in range(0, len(board)):
         for cell in board[y]:
@@ -25,19 +25,19 @@ def start_dijkstra():
 
             if cell.comment == 'end':
                 print('end found #1')
-            Q.append(cell)
+            q.append(cell)
 
-    while len(Q) > 0:
-        curr = find_cell_with_min_dist(dists, Q)
+    while len(q) > 0:
+        curr = find_cell_with_min_dist(dists, q)
         # if curr.comment == 'end':
         #    print('end found #2')
         #    break
         print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
-        Q.remove(curr)
+        q.remove(curr)
 
         neighbors = get_neighbors(curr, board)
         for n in neighbors:
-            if n in Q and n.comment != 'end':
+            if n in q and n.comment != 'end':
                 alt = dists[curr] + 1
                 if alt < dists[n]:
                     dists[n] = alt
@@ -55,7 +55,6 @@ def start_dijkstra():
 def update_shortest_path(prevs, target):
     path = []
     while target is not None:
-        print('SHORTEST')
         if target.comment != 'end' and target.comment != 'start':
             target.comment = 'shortest'
         path.insert(0, target)
