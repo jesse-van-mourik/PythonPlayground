@@ -13,6 +13,8 @@ def start_dijkstra():
 
     for y in range(0, len(board)):
         for cell in board[y]:
+            if cell.comment == 'wall':
+                continue
             if cell.comment == 'start':
                 print('start found')
                 dists[cell] = 0
@@ -27,7 +29,7 @@ def start_dijkstra():
 
     while len(Q) > 0:
         curr = find_cell_with_min_dist(dists, Q)
-        #if curr.comment == 'end':
+        # if curr.comment == 'end':
         #    print('end found #2')
         #    break
         print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
