@@ -2,4 +2,12 @@ body {
     margin: 0;
 }
 
+.flashmessage-center{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 8px;
+}
+
+
 

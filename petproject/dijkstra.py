@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 from board import board_from_form
 
 bp = Blueprint('dijkstra', __name__)
@@ -16,22 +16,19 @@ def start_dijkstra():
             if cell.comment == 'wall':
                 continue
             if cell.comment == 'start':
-                print('start found')
                 dists[cell] = 0
             else:
                 dists[cell] = float('inf')
 
             prevs[cell] = None
-
-            if cell.comment == 'end':
-                print('end found #1')
             q.append(cell)
 
     while len(q) > 0:
         curr = find_cell_with_min_dist(dists, q)
-        # if curr.comment == 'end':
-        #    print('end found #2')
-        #    break
+        if curr == float('inf'):
+            # no solution can be found
+            break
+
         print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
         q.remove(curr)
 
@@ -44,11 +41,12 @@ def start_dijkstra():
                     n.comment = 'visited'
                     prevs[n] = curr
             elif n.comment == 'end':
-                print('end found #3')
                 prevs[n] = curr
                 update_shortest_path(prevs, n)
                 return render_template('board.html', board=board)
 
+    # no solution was found
+    flash('No solution was found.')
     return render_template('board.html', board=board)
 
 
@@ -74,7 +72,7 @@ def find_cell_with_min_dist(dists, Q):
 
 def get_neighbors(cell, board):
     neighbors = []
-
+    # longer code for readability
     # northern
     neighbors.append(board[max(cell.y - 1, 0)][cell.x])
     # southern

@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+<div class="flashmessage-center">
+         {{ message }}
+</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+
 <form>
 <table class="center-table">
     {% for row in board %}
