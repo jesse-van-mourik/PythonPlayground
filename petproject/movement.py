@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from board import board_from_form
-import time
+
 bp = Blueprint('movement', __name__)
 
 

@@ -51,7 +51,7 @@
                 <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_left') }}">&#8592</button>
             </td>
             <td>
-
+                <button type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">GO!</button>
             </td>
             <td>
                 <button class="directional-button" type="submit" formmethod="post" formaction="{{ url_for('movement.call_step_right') }}">&#8594</button>

@@ -22,6 +22,9 @@ def create_app(test_config=None):
     from petproject import movement
     app.register_blueprint(movement.bp)
 
+    from petproject import dijkstra
+    app.register_blueprint(dijkstra.bp)
+
     return app
 
 
