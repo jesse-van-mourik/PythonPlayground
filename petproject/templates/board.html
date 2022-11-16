@@ -5,7 +5,66 @@
 
 
 <div class="column">
-    <p>My text here.</p>
+    <p>
+        <h4>Goal</h4>
+        On this page a playing board is displayed with a green starting tile, a red finishing tile and black wall tiles.
+        The goal of the algorithms is to find the shortest path from start to finish. There are two algorithms available to do so:
+        Dijkstra's algorithm and the A* algorithm.
+        <h4>Dijkstra</h4>
+        Invented in 1956, <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra's algorihtm</a> has become a classic algorithm that is taught in many
+        introductory computer science courses. It is not an optimal algorithm in many cases but has many possible applications in finding
+        a lowest cost approach.
+        <h4>A*</h4>
+        The <a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A* algorithm</a> was published in 1968 as part of a project that
+        revolved around a robot that could find its own path to a destination. The algorithm has many features in common with Dijkstra's algorithm
+        but it is optimised by using a heuristic that can eliminate many path that will not lead to the final destination (such as the paths in the
+        opposite direction).
+        <h4>Legend</h4>
+        <table>
+            <tr>
+                <td>
+                    <div class="cell start"></div>
+                </td>
+                <td>
+                    start
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell end"></div>
+                </td>
+                <td>
+                    finish
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell wall"></div>
+                </td>
+                <td>
+                    wall
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell visited"></div>
+                </td>
+                <td>
+                    visited by algorithm
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="cell shortest"></div>
+                </td>
+                <td>
+                   shortest path
+                </td>
+            </tr>
+
+        </table>
+
+    </p>
     <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">Start Dijkstra</button>
     <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('astar.start_astar') }}">Start A*</button>
     <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('dijkstra.board_reset') }}">Reset</button>
