@@ -15,6 +15,7 @@
 <div class="column">
     <p>My text here.</p>
     <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">Start Dijkstra</button>
+    <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('astar.start_astar') }}">Start A*</button>
 
 </div>
 <form class="column" id="boardform" >

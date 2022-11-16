@@ -26,7 +26,8 @@ def board_from_form(form):
         board.board[int(values[0])][int(values[1])].comment = values[2]
         # dev notes
         if values[2] != "empty":
-            print("x = " + values[0] + " | y= " + values[1] + " | " + values[2])
+            # print("x = " + values[0] + " | y= " + values[1] + " | " + values[2])
+            pass
     return board
 
 

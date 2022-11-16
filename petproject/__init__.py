@@ -26,6 +26,9 @@ def create_app(test_config=None):
     from petproject import dijkstra
     app.register_blueprint(dijkstra.bp)
 
+    from petproject import astar
+    app.register_blueprint(astar.bp)
+
     return app
 
 
