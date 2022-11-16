@@ -95,3 +95,16 @@ def calculate_num_visited(board):
                 count += 1
 
     return count
+
+
+@bp.route('/boardreset', methods=('POST',))
+def board_reset():
+    print('resetting board')
+    board = board_from_form(request.form).board
+
+    for y in range(0, len(board[0])):
+        for cell in board[y]:
+            if cell.comment != 'wall' and cell.comment != 'start' and cell.comment != 'end':
+                cell.comment = None
+                
+    return render_template('board.html', board=board)
