@@ -2,15 +2,7 @@
 
 {% block content %}
 
-{% with messages = get_flashed_messages() %}
-   {% if messages %}
-      {% for message in messages %}
-<div class="flashmessage-center">
-         {{ message }}
-</div>
-      {% endfor %}
-   {% endif %}
-{% endwith %}
+
 
 <div class="column">
     <p>My text here.</p>
@@ -19,6 +11,7 @@
     <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('dijkstra.board_reset') }}">Reset</button>
 
 </div>
+
 <form class="column" id="boardform" >
 <table class="center-table">
     {% for row in board %}
@@ -59,5 +52,15 @@
 </table>
 
 </form>
-
+<div class="column"></div>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+<div class="flashmessage-center">
+         {{ message }}
+</div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+</div>
 {% endblock %}

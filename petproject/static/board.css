@@ -45,6 +45,8 @@
 
 button.startbutton{
     width: 50%;
+    color: darkgreen;
+    font-weight: bold;
     background-color: #0AC041;
     border-radius: 5px;
     border: none;

@@ -38,8 +38,10 @@ def start_astar():
                 print('end was reached')
                 came_from[n] = curr
                 reconstruct_path(came_from, curr)
-                num_visited = calculate_num_visited(board)
-                flash('A solution was found! Tiles visited: ' + str(num_visited))
+                counts = calculate_num_visited(board)
+                flash('A solution was found!')
+                flash('Tiles visited: ' + str(counts[0]))
+                flash('Path length: ' + str(counts[1]))
                 return render_template('board.html', board=board)
             if n.comment == 'wall':
                 continue
