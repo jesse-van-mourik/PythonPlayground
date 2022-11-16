@@ -43,6 +43,8 @@ def start_dijkstra():
             elif n.comment == 'end':
                 prevs[n] = curr
                 update_shortest_path(prevs, n)
+                num_visited = calculate_num_visited(board)
+                flash('A solution was found! Tiles visited: ' + str(num_visited))
                 return render_template('board.html', board=board)
 
     # no solution was found
@@ -83,3 +85,13 @@ def get_neighbors(cell, board):
     neighbors.append(board[cell.y][min(cell.x + 1, len(board[0])-1)])
 
     return neighbors
+
+
+def calculate_num_visited(board):
+    count = 0
+    for y in range(0, len(board[0])):
+        for cell in board[y]:
+            if cell.comment == 'visited' or cell.comment == 'shortest':
+                count += 1
+
+    return count

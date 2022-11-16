@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash
 from board import board_from_form
-from dijkstra import get_neighbors
+from dijkstra import get_neighbors, calculate_num_visited
 
 bp = Blueprint('astar', __name__)
 
@@ -38,6 +38,8 @@ def start_astar():
                 print('end was reached')
                 came_from[n] = curr
                 reconstruct_path(came_from, curr)
+                num_visited = calculate_num_visited(board)
+                flash('A solution was found! Tiles visited: ' + str(num_visited))
                 return render_template('board.html', board=board)
             if n.comment == 'wall':
                 continue
@@ -54,6 +56,7 @@ def start_astar():
                         open_set.append(n)
 
     print('no solution')
+    flash('No solution was found.')
     return render_template('board.html', board=board)
 
 
