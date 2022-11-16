@@ -1,14 +1,17 @@
 .cell{
     width: 20px;
     height: 20px;
+    border-radius: 2px;
 }
 
 .cell.shortest{
     background-color: #add8e6;
+    content: ".";
 }
 
 .cell.visited{
-    background-color: blue;
+    background-color: #7492E3;
+
 }
 
 .cell.empty{
@@ -20,7 +23,7 @@
 }
 
 .cell.start{
-    background-color: green;
+    background-color: #11E47B;
 }
 
 .cell.end{
@@ -32,12 +35,29 @@
     justify-content: center;
 }
 
+.center-table td{
+    padding: 0;
+}
+
 .input-hidden{
     display: none;
 }
 
-button.directional-button{
-    color: red;
-    height: 30px;
-    width: 30px;
+button.startbutton{
+    width: 50%;
+    background-color: #0AC041;
+    border-radius: 5px;
+    border: none;
+}
+
+// button.directional-button{
+//    color: red;
+//    height: 30px;
+//    width: 30px;
+// }
+
+.column{
+    padding-left: 15px;
+    float: left;
+    width: 33.33%;
 }

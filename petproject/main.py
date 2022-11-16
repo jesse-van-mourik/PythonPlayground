@@ -16,7 +16,7 @@ def display_cell_form():
 
 
 @bp.route('/board', methods=('POST',))
-def create_cell():
+def create_board():
     board = Board()
     for i in range(1, 11):
         key_x = 'wall' + str(i) + 'x'

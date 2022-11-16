@@ -12,8 +12,12 @@
    {% endif %}
 {% endwith %}
 
+<div class="column">
+    <p>My text here.</p>
+    <button class="startbutton" form="boardform" type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">Start Dijkstra</button>
 
-<form>
+</div>
+<form class="column" id="boardform" >
 <table class="center-table">
     {% for row in board %}
     <tr>
@@ -48,11 +52,10 @@
         {% endfor %}
     </tr>
     {% endfor %}
+
+
 </table>
 
-    <button type="submit" formmethod="post" formaction="{{ url_for('dijkstra.start_dijkstra') }}">GO!</button>
-
-
-
 </form>
+
 {% endblock %}
