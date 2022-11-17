@@ -115,3 +115,6 @@ def board_reset():
                 cell.comment = None
 
     return render_template('board.html', board=board)
+
+
+

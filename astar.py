@@ -7,6 +7,20 @@ application = Blueprint('astar', __name__)
 
 @application.route('/astar', methods=('POST',))
 def start_astar():
+    board, solution_found = perform_astar(request)
+
+    if solution_found:
+        counts = calculate_num_visited(board)
+        flash('A solution was found!')
+        flash('Tiles visited: ' + str(counts[0]))
+        flash('Path length: ' + str(counts[1]))
+        return render_template('board.html', board=board)
+
+    flash('No solution was found.')
+    return render_template('board.html', board=board)
+
+
+def perform_astar(request):
     print("START A*")
     # heuristic = abs(target.x - curr.x) + abs(target.y - curr.y) aka Manhattan Distance
     board = board_from_form(request.form).board
@@ -28,21 +42,22 @@ def start_astar():
     g_scores[start_cell] = 0
     f_scores[start_cell] = heuristic_score(start_cell, end_cell)
 
+    # start of actual algorithm
     while len(open_set) > 0:
+        # f-score is a sum of the cost of getting to that tile plus the estimated cost
+        # of getting to the final destination (as determined by the heuristic).
+        # The cell with the lowest f-score will be investigated next.
         curr = find_next_current_cell(open_set, f_scores)
         open_set.remove(curr)
 
+        # gets four direction neighbours, no diagonals
         neighbors = get_neighbors(curr, board)
         for n in neighbors:
             if n == end_cell:
                 print('end was reached')
                 came_from[n] = curr
                 reconstruct_path(came_from, curr)
-                counts = calculate_num_visited(board)
-                flash('A solution was found!')
-                flash('Tiles visited: ' + str(counts[0]))
-                flash('Path length: ' + str(counts[1]))
-                return render_template('board.html', board=board)
+                return board, True
             if n.comment == 'wall':
                 continue
             else:
@@ -53,13 +68,13 @@ def start_astar():
                     came_from[n] = curr
                     g_scores[n] = tentative_g_score
                     f_scores[n] = tentative_g_score + heuristic_score(n, end_cell)
-                    print(str(n.x) + ", " + str(n.y) + " n of: " + str(curr.x) + ", " + str(curr.y) + " with f: " + str(f_scores[n]))
+                    print(str(n.x) + ", " + str(n.y) + " n of: " + str(curr.x) + ", " + str(curr.y) + " with f: " + str(
+                        f_scores[n]))
                     if n not in open_set:
                         open_set.append(n)
 
     print('no solution')
-    flash('No solution was found.')
-    return render_template('board.html', board=board)
+    return board, False
 
 
 def find_start_and_end_cell(board):
@@ -79,22 +94,23 @@ def find_start_and_end_cell(board):
 
 
 def heuristic_score(cell, end_cell):
+    # manhattan distance
     return abs(cell.x - end_cell.x) + abs(cell.y - end_cell.y)
 
 
 def find_next_current_cell(open_set, f_scores):
+    # find cell with lowest f-score
     min_value = float('inf')
     next_current = None
     for cell in open_set:
-        # print("finding next: ..." + str(f_scores[cell]) + " " + str(cell.x) + ", " + str(cell.y))
         if f_scores[cell] < min_value:
             min_value = f_scores[cell]
             next_current = cell
-    # print("NEXT: " + str(next_current.x) + ", " + str(next_current.y) + " F: " + str(f_scores[next_current]))
     return next_current
 
 
 def reconstruct_path(came_from, current):
+    # visualize the shortest path
     keys = list(came_from.keys())
     while current in keys:
         if current.comment != 'start':
