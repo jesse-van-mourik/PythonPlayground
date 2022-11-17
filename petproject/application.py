@@ -26,4 +26,4 @@ def create_app(test_config=None):
 
 
 if __name__ == "__main__":
-    create_app().run()
+    create_app().run(host='localhost', port=8080)
