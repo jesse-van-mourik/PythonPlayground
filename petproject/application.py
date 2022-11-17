@@ -6,7 +6,7 @@ import general
 
 
 def create_app(test_config=None):
-    application = Flask(__name__, )
+
     application.config['SECRET_KEY'] = '12345'
 
     # if test_config is None:
@@ -20,12 +20,14 @@ def create_app(test_config=None):
     # except OSError:
     #     pass
 
-    application.register_blueprint(general.application)
-    application.register_blueprint(dijkstra.application)
-    application.register_blueprint(astar.application)
-
     return application
 
 
+application = Flask(__name__)
+application.register_blueprint(general.application)
+application.register_blueprint(dijkstra.application)
+application.register_blueprint(astar.application)
+
+
 if __name__ == "__main__":
-    create_app().run()
+    application.run()
