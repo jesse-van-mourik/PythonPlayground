@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template
-from petproject import dijkstra, astar, general
+import dijkstra
+import astar
+import general
 
 
 def create_app(test_config=None):
