@@ -18,16 +18,16 @@ def create_app(test_config=None):
         pass
 
     from petproject import main
-    app.register_blueprint(main.bp)
+    app.register_blueprint(main.application)
 
     # from petproject.Excluded import movement
-    # app.register_blueprint(movement.bp)
+    # app.register_blueprint(movement.application)
 
     from petproject import dijkstra
-    app.register_blueprint(dijkstra.bp)
+    app.register_blueprint(dijkstra.application)
 
     from petproject import astar
-    app.register_blueprint(astar.bp)
+    app.register_blueprint(astar.application)
 
     return app
 

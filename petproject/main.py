@@ -2,20 +2,20 @@ from flask import Blueprint, render_template, request, make_response, url_for, r
 from board import Board
 
 
-bp = Blueprint('main', __name__)
+application = Blueprint('main', __name__)
 
 
-@bp.route('/')
+@application.route('/')
 def index():
     return render_template('home.html')
 
 
-@bp.route('/cellform')
+@application.route('/cellform')
 def display_cell_form():
     return render_template('cellform.html')
 
 
-@bp.route('/board', methods=('POST',))
+@application.route('/board', methods=('POST',))
 def create_board():
     board = Board()
     for i in range(1, 11):
@@ -36,12 +36,6 @@ def create_board():
     return render_template('board.html', board=board.board)
 
 
-@bp.route('/message', methods=("POST",))
-def print_message():
-    for cell in request.form:
-        print(cell)
-
-    print('button is pressed')
 
 
 

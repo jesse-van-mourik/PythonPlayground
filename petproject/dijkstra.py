@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, request, flash
 from board import board_from_form
 
-bp = Blueprint('dijkstra', __name__)
+application = Blueprint('dijkstra', __name__)
 
 
-@bp.route('/dijkstra', methods=('POST',))
+@application.route('/dijkstra', methods=('POST',))
 def start_dijkstra():
     board = board_from_form(request.form).board
     dists = {}
@@ -104,7 +104,7 @@ def calculate_num_visited(board):
     return [count_visited, count_shortest]
 
 
-@bp.route('/boardreset', methods=('POST',))
+@application.route('/boardreset', methods=('POST',))
 def board_reset():
     print('resetting board')
     board = board_from_form(request.form).board

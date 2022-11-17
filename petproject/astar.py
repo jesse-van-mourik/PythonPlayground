@@ -2,10 +2,10 @@ from flask import Blueprint, render_template, request, flash
 from board import board_from_form
 from dijkstra import get_neighbors, calculate_num_visited
 
-bp = Blueprint('astar', __name__)
+application = Blueprint('astar', __name__)
 
 
-@bp.route('/astar', methods=('POST',))
+@application.route('/astar', methods=('POST',))
 def start_astar():
     print("START A*")
     # heuristic = abs(target.x - curr.x) + abs(target.y - curr.y) aka Manhattan Distance
