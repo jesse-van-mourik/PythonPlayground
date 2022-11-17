@@ -17,7 +17,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from petproject import main
+    from petproject import application
     app.register_blueprint(main.application)
 
     # from petproject.Excluded import movement
