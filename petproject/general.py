@@ -1,8 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, make_response, url_for, redirect, Flask
 from board import Board
 
 application = Blueprint('general', __name__)
-
 
 @application.route('/')
 def index():
