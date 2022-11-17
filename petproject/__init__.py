@@ -3,7 +3,7 @@ from flask import Flask
 
 
 def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)
+    application = app = Flask(__name__, instance_relative_config=True)
     app.config['SECRET_KEY'] = '12345'
 
     if test_config is None:
