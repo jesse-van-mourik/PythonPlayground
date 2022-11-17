@@ -32,4 +32,4 @@ def create_app(test_config=None):
     return app
 
 
-create_app().run(host='localhost', port=8080)
+# create_app().run(host='localhost', port=8080)
