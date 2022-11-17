@@ -4,8 +4,8 @@ import dijkstra
 import astar
 
 
-def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)
+def create_app():
+    app = Flask(__name__)
     app.config['SECRET_KEY'] = '12345'
 
     app.register_blueprint(main.application)
@@ -15,4 +15,5 @@ def create_app(test_config=None):
     return app
 
 
-create_app(create_app).run()
+if __name__ == "__main__":
+    create_app().run()
