@@ -3,6 +3,7 @@ from board import Board
 
 application = Blueprint('general', __name__)
 
+
 @application.route('/')
 def index():
     return render_template('home.html')
