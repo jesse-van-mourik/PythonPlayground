@@ -3,7 +3,7 @@ from flask import Flask
 
 
 def create_app(test_config=None):
-    application = app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True)
     app.config['SECRET_KEY'] = '12345'
 
     if test_config is None:
@@ -18,7 +18,7 @@ def create_app(test_config=None):
         pass
 
     from petproject import application
-    app.register_blueprint(main.application)
+    app.register_blueprint(application.application)
 
     # from petproject.Excluded import movement
     # app.register_blueprint(movement.application)
@@ -29,7 +29,7 @@ def create_app(test_config=None):
     from petproject import astar
     app.register_blueprint(astar.application)
 
-    return application
+    return app
 
 
-# create_app().run(host='localhost', port=8080)
+create_app(create_app).run(host='localhost', port=8080)

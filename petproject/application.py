@@ -1,26 +1,11 @@
-from flask import Blueprint, render_template, request, make_response, url_for, redirect, Flask
+from flask import Blueprint, render_template, request
 from board import Board
-
 
 application = Blueprint('main', __name__)
 
 
 @application.route('/')
 def index():
-    application = app = Flask(__name__, instance_relative_config=True)
-    app.config['SECRET_KEY'] = '12345'
-    from petproject import application
-    app.register_blueprint(application.application)
-
-    # from petproject.Excluded import movement
-    # app.register_blueprint(movement.application)
-
-    from petproject import dijkstra
-    app.register_blueprint(dijkstra.application)
-
-    from petproject import astar
-    app.register_blueprint(astar.application)
-
     return render_template('home.html')
 
 
