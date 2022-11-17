@@ -1,5 +1,4 @@
-import os
-from flask import Flask, render_template
+from flask import Flask
 import dijkstra
 import astar
 import general
@@ -7,7 +6,7 @@ import general
 
 def create_app(test_config=None):
 
-    application.config['SECRET_KEY'] = '12345'
+
 
     # if test_config is None:
     #     application.config.from_pyfile('config.py', silent=True)
@@ -24,6 +23,7 @@ def create_app(test_config=None):
 
 
 application = Flask(__name__)
+application.config['SECRET_KEY'] = '12345'
 application.register_blueprint(general.application)
 application.register_blueprint(dijkstra.application)
 application.register_blueprint(astar.application)
