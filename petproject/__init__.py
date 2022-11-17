@@ -29,7 +29,7 @@ def create_app(test_config=None):
     from petproject import astar
     app.register_blueprint(astar.application)
 
-    return app
+    return application
 
 
 # create_app().run(host='localhost', port=8080)
