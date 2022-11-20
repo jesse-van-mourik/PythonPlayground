@@ -1,7 +1,3 @@
-.cellform-form{
-    padding-left: 15px;
-}
-
 .cellform-table{
     width: 50%;
 }
@@ -15,6 +11,11 @@
 }
 
 .cellform-btn{
+    color: darkgreen;
+    font-weight: bold;
+    background-color: #0AC041;
+    border-radius: 5px;
+    border: none;
     margin-top: 20px;
     padding: 10px;
     font-weight: bold;

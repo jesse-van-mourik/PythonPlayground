@@ -12,9 +12,9 @@
 <title>{% block title %}Python Playground{% endblock %} </title>
 <nav class="navbar">
     <ul>
-        <li><a href="{{ url_for('main.display_cell_form') }}">Config cells</a></li>
-        <li>About</li>
-        <li>Contact</li>
+        <a href="{{ url_for('main.index') }}"><li>Home</li></a>
+        <a href="{{ url_for('main.display_cell_form') }}"><li>Pathfinding</li></a>
+        <a href="{{ url_for('contact.show_contact_page') }}"><li>Contact</li></a>
     </ul>
 </nav>
 

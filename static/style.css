@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+.content {
+    padding-left: 15px;
+}
+
 body {
     margin: 0;
     font-family: Roboto;
@@ -22,4 +26,9 @@ body {
 
 h4{
     margin-bottom: .5em;
+}
+
+button[type="submit"]:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }

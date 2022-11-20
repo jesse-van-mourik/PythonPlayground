@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form name="cellform" class="cellform-form" action="board" method="post" onsubmit="return validateForm()">
+<form name="cellform" action="board" method="post" onsubmit="return validateForm()">
     <h3>Start and finish</h3>
 <table class="cellform-table">
     <tr>
@@ -179,7 +179,7 @@
         </td>
     </tr>
 </table>
-    <input class="cellform-btn" type="submit" value="To board">
+    <button class="cellform-btn" type="submit">To board</button>
 </form>
 <p class = "errorMessage" >123 </p>
 <script>
