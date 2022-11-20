@@ -6,6 +6,21 @@ application = Blueprint('dijkstra', __name__)
 
 @application.route('/dijkstra', methods=('POST',))
 def start_dijkstra():
+    board, solution_found = perform_dijkstra(request)
+
+    if solution_found:
+        counts = calculate_num_visited(board)
+        flash('A solution was found!')
+        flash('Tiles visited: ' + str(counts[0]))
+        flash('Path length: ' + str(counts[1]))
+        return render_template('board.html', board=board)
+
+    # no solution was found
+    flash('No solution was found.')
+    return render_template('board.html', board=board)
+
+
+def perform_dijkstra(request):
     board = board_from_form(request.form).board
     dists = {}
     prevs = {}  # keeps track of the shortest path
@@ -43,16 +58,9 @@ def start_dijkstra():
             elif n.comment == 'end':
                 prevs[n] = curr
                 update_shortest_path(prevs, n)
-                counts = calculate_num_visited(board)
+                return board, True
 
-                flash('A solution was found!')
-                flash('Tiles visited: ' + str(counts[0]))
-                flash('Path length: ' + str(counts[1]))
-                return render_template('board.html', board=board)
-
-    # no solution was found
-    flash('No solution was found.')
-    return render_template('board.html', board=board)
+    return board, False
 
 
 def update_shortest_path(prevs, target):
