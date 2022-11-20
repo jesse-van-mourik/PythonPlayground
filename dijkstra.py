@@ -6,7 +6,7 @@ application = Blueprint('dijkstra', __name__)
 
 @application.route('/dijkstra', methods=('POST',))
 def start_dijkstra():
-    board, solution_found = perform_dijkstra(request)
+    board, solution_found = perform_dijkstra(board_from_form(request.form).board)
 
     if solution_found:
         counts = calculate_num_visited(board)
@@ -20,8 +20,7 @@ def start_dijkstra():
     return render_template('board.html', board=board)
 
 
-def perform_dijkstra(request):
-    board = board_from_form(request.form).board
+def perform_dijkstra(board):
     dists = {}
     prevs = {}  # keeps track of the shortest path
     q = []

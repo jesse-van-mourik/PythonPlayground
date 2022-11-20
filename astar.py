@@ -7,7 +7,7 @@ application = Blueprint('astar', __name__)
 
 @application.route('/astar', methods=('POST',))
 def start_astar():
-    board, solution_found = perform_astar(request)
+    board, solution_found = perform_astar(board_from_form(request.form).board)
 
     if solution_found:
         counts = calculate_num_visited(board)
@@ -20,10 +20,9 @@ def start_astar():
     return render_template('board.html', board=board)
 
 
-def perform_astar(request):
+def perform_astar(board):
     print("START A*")
     # heuristic = abs(target.x - curr.x) + abs(target.y - curr.y) aka Manhattan Distance
-    board = board_from_form(request.form).board
     start_and_end = find_start_and_end_cell(board)
     start_cell = start_and_end[0]
     end_cell = start_and_end[1]
