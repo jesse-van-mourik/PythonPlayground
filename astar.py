@@ -67,8 +67,8 @@ def perform_astar(board):
                     came_from[n] = curr
                     g_scores[n] = tentative_g_score
                     f_scores[n] = tentative_g_score + heuristic_score(n, end_cell)
-                    print(str(n.x) + ", " + str(n.y) + " n of: " + str(curr.x) + ", " + str(curr.y) + " with f: " + str(
-                        f_scores[n]))
+                    # print(str(n.x) + ", " + str(n.y) + " n of: " + str(curr.x) + ", " + str(curr.y) + " with f: " + str(
+                    #    f_scores[n]))
                     if n not in open_set:
                         open_set.append(n)
 

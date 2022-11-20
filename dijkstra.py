@@ -43,7 +43,7 @@ def perform_dijkstra(board):
             # no solution can be found
             break
 
-        print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
+        # print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
         q.remove(curr)
 
         neighbors = get_neighbors(curr, board)

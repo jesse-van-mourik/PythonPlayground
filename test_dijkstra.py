@@ -41,12 +41,12 @@ def set_walls_around_start(board):
 
 
 def set_walls_around_end(board):
-    board[5][4].comment = 'wall'
     board[5][5].comment = 'wall'
     board[5][6].comment = 'wall'
-    board[6][4].comment = 'wall'
-    board[6][6].comment = 'wall'
-    board[7][4].comment = 'wall'
+    board[5][7].comment = 'wall'
+    board[6][5].comment = 'wall'
+    board[6][7].comment = 'wall'
     board[7][5].comment = 'wall'
     board[7][6].comment = 'wall'
+    board[7][7].comment = 'wall'
     return
