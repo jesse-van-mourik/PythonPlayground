@@ -59,7 +59,6 @@ button.startbutton{
 // }
 
 .column{
-    padding-left: 15px;
     float: left;
-    width: 33.33%;
+    width: 40%;
 }
