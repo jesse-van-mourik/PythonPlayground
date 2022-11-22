@@ -1,11 +1,8 @@
 class Cell:
-    x = 0
-    y = 0
-    comment = ''
 
     def __init__(self, x, y):
-        self.x = x;
-        self.y = y;
+        self.x = x
+        self.y = y
 
 
 class Board:
@@ -15,7 +12,6 @@ class Board:
         for i in range(y):
             self.board.append([])
             for j in range(x):
-                #board[i].append(Cell(i, j))
                 self.board[i].append(Cell(j, i))
 
 

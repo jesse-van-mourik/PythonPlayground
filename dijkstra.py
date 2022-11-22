@@ -23,8 +23,9 @@ def start_dijkstra():
 def perform_dijkstra(board):
     dists = {}
     prevs = {}  # keeps track of the shortest path
-    q = []
+    q = []  # the list of cells to visit
 
+    # initialize lists with default values
     for y in range(0, len(board)):
         for cell in board[y]:
             if cell.comment == 'wall':
@@ -32,7 +33,7 @@ def perform_dijkstra(board):
             if cell.comment == 'start':
                 dists[cell] = 0
             else:
-                dists[cell] = float('inf')
+                dists[cell] = float('inf')  # infinite distance means not-yet-visited
 
             prevs[cell] = None
             q.append(cell)
@@ -46,11 +47,12 @@ def perform_dijkstra(board):
         # print(str(curr.comment) + "X: " + str(curr.x) + " Y: " + str(curr.y))
         q.remove(curr)
 
+        # note: neighbors in four directions, no diagonals.
         neighbors = get_neighbors(curr, board)
         for n in neighbors:
             if n in q and n.comment != 'end':
                 alt = dists[curr] + 1
-                if alt < dists[n]:
+                if alt < dists[n]:  # is the neighbor not visited yet, or did we find a shorter route to it?
                     dists[n] = alt
                     n.comment = 'visited'
                     prevs[n] = curr
@@ -71,11 +73,12 @@ def update_shortest_path(prevs, target):
         target = prevs[target]
 
 
-def find_cell_with_min_dist(dists, Q):
+def find_cell_with_min_dist(dists, q):
+    # where q is the set of cells to visit
     min_dist = float('inf')
     key = float('inf')
     for item in dists.items():
-        if item[1] < min_dist and item[0] in Q:
+        if item[1] < min_dist and item[0] in q:
             min_dist = item[1]
             key = item[0]
 
