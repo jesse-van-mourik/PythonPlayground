@@ -34,6 +34,10 @@ def create_board():
 
     return render_template('board.html', board=board.board)
 
+@application.route('/stats', methods=('GET',))
+def open_stats_page():
+    return render_template('stats.html')
+
 
 
 
