@@ -1,0 +1,17 @@
+.img-skeleton{
+    margin: 20px;
+    width: 600px;
+    height: 400px;
+    background-color: grey;
+    background: linear-gradient(90deg, grey, lightgrey);
+    animation: skeleton-anim 1.5s infinite alternate;
+}
+
+@keyframes skeleton-anim{
+    from{
+        opacity: 0.25;
+    }
+    to{
+        opacity: 1;
+    }
+}
