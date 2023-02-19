@@ -8,12 +8,12 @@ from matplotlib.figure import Figure
 application = Blueprint('stats', __name__)
 
 
-@application.route('/plot.png')
-def build_plot():
+@application.route('/plot/<year>', methods=('POST', 'GET'))
+def build_plot(year):
 
     x = ['1st cat', '2nd cat', '3rd cat', '4th cat', '5th cat']
 
-    y_value_arrays = get_y_value_arrays()
+    y_value_arrays = get_y_value_arrays(year)
     best_r = get_best_pearsonr(y_value_arrays)
 
     fig = Figure()
@@ -59,28 +59,28 @@ def get_visconsumptie_persoonskenmerk(kenmerk, periode=2021):
     return ds[0]['Minimaal1DagPerWeek_73']
 
 
-def get_y_value_arrays():
+def get_y_value_arrays(periode):
     edu = []
     wealth = []
     income = []
 
-    edu.append(get_visconsumptie_persoonskenmerk(2018710))
-    edu.append(get_visconsumptie_persoonskenmerk(2018720))
-    edu.append(get_visconsumptie_persoonskenmerk(2018750))
-    edu.append(get_visconsumptie_persoonskenmerk(2018800))
-    edu.append(get_visconsumptie_persoonskenmerk(2018810))
+    edu.append(get_visconsumptie_persoonskenmerk(2018710, periode))
+    edu.append(get_visconsumptie_persoonskenmerk(2018720, periode))
+    edu.append(get_visconsumptie_persoonskenmerk(2018750, periode))
+    edu.append(get_visconsumptie_persoonskenmerk(2018800, periode))
+    edu.append(get_visconsumptie_persoonskenmerk(2018810, periode))
 
-    wealth.append(get_visconsumptie_persoonskenmerk(1021200))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021210))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021220))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021230))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021240))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021200, periode))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021210, periode))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021220, periode))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021230, periode))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021240, periode))
 
-    income.append(get_visconsumptie_persoonskenmerk(1014752))
-    income.append(get_visconsumptie_persoonskenmerk(1014753))
-    income.append(get_visconsumptie_persoonskenmerk(1014754))
-    income.append(get_visconsumptie_persoonskenmerk(1014755))
-    income.append(get_visconsumptie_persoonskenmerk(1014756))
+    income.append(get_visconsumptie_persoonskenmerk(1014752, periode))
+    income.append(get_visconsumptie_persoonskenmerk(1014753, periode))
+    income.append(get_visconsumptie_persoonskenmerk(1014754, periode))
+    income.append(get_visconsumptie_persoonskenmerk(1014755, periode))
+    income.append(get_visconsumptie_persoonskenmerk(1014756, periode))
 
     return [edu, wealth, income]
 

@@ -1,14 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
 <p>
-    Welcome to the stats page!
-    <img src="{{ url_for('stats.build_plot') }}" alt="my plot" class="img-skeleton">
+    Welcome to the stats page! <br>
+    This page displays the percentage of the population that consumes <br>
+    fish at least one day per week. The population is divided in cohorts <br>
+    of 20%.<br>
+    <br>
+    The variable with the highest R (Pearson) score has the red line. <br>
+    <br>
+</p>
+<h4>Fish consumption</h4>
+<p>
+    <img src="/plot/2021" alt="my plot" class="img-skeleton">
+</p>
+<p>
+    <button class="stats-btn" onclick="get2020()">2020</button>
 </p>
 <script>
 var img = document.querySelector('img')
 
+function get2020() {
+    img.classList.add('img-skeleton');
+    img.src = "/plot/2020";
+}
+
 function loaded() {
-  img.classList.remove('img-skeleton')
+  img.classList.remove('img-skeleton');
 }
 
 if (img.complete) {
