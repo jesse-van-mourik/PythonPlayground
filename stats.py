@@ -1,63 +1,41 @@
-import base64
 import io
 import cbsodata
-from matplotlib import pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from flask import Blueprint, Response
-
-# table_id = '85058NED'
-# year = 2015
-# province = 'PV25  '
-#
-# ds = cbsodata.get_data(
-#       table_id=table_id,
-#       filters="Perioden gt '" + str(year) + "JJ00' "
-#               "and SoortBewoondeWoonruimten eq 'A050218' "
-#               "and RegioS eq '" + province + "'",
-#       select='SoortBewoondeWoonruimten, '
-#              'Perioden, '
-#              'BewoondeWoonruimte_1, '
-#              'RegioS'
-# )
-# print(ds)
-from matplotlib.backends.backend_template import FigureCanvas
+from scipy.stats import pearsonr
 from matplotlib.figure import Figure
-from numpy import NaN
 
 application = Blueprint('stats', __name__)
 
 
 @application.route('/plot.png')
 def build_plot():
-    edu = []
-    wealth = []
-    income = []
+
     x = ['1st cat', '2nd cat', '3rd cat', '4th cat', '5th cat']
 
-    edu.append(get_visconsumptie_persoonskenmerk(2018710))
-    edu.append(get_visconsumptie_persoonskenmerk(2018720))
-    edu.append(get_visconsumptie_persoonskenmerk(2018750))
-    edu.append(get_visconsumptie_persoonskenmerk(2018800))
-    edu.append(get_visconsumptie_persoonskenmerk(2018810))
-
-    wealth.append(get_visconsumptie_persoonskenmerk(1021200))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021210))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021220))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021230))
-    wealth.append(get_visconsumptie_persoonskenmerk(1021240))
-
-    income.append(get_visconsumptie_persoonskenmerk(1014752))
-    income.append(get_visconsumptie_persoonskenmerk(1014753))
-    income.append(get_visconsumptie_persoonskenmerk(1014754))
-    income.append(get_visconsumptie_persoonskenmerk(1014755))
-    income.append(get_visconsumptie_persoonskenmerk(1014756))
+    y_value_arrays = get_y_value_arrays()
+    best_r = get_best_pearsonr(y_value_arrays)
 
     fig = Figure()
     plot = fig.add_subplot(1, 1, 1)
-    plot.plot(x, edu, color='red', label='education')
-    plot.plot(x, wealth, color='blue', label='wealth')
-    plot.plot(x, income, color='green', label='income')
+
+    if best_r == 'education':
+        plot.plot(x, y_value_arrays[0], color='red', label='education')
+    else:
+        plot.plot(x, y_value_arrays[0], color='grey', label='education')
+
+    if best_r == 'wealth':
+        plot.plot(x, y_value_arrays[1], color='red', label='wealth')
+    else:
+        plot.plot(x, y_value_arrays[1], color='grey', label='wealth', dashes=[4, 2])
+
+    if best_r == 'income':
+        plot.plot(x, y_value_arrays[2], color='red', label='income')
+    else:
+        plot.plot(x, y_value_arrays[2], color='grey', label='income', dashes=[8, 2])
+
     plot.legend(loc='upper left')
+
     img = io.BytesIO()
 
     FigureCanvasAgg(fig).print_png(img)
@@ -79,3 +57,45 @@ def get_visconsumptie_persoonskenmerk(kenmerk, periode=2021):
     )
 
     return ds[0]['Minimaal1DagPerWeek_73']
+
+
+def get_y_value_arrays():
+    edu = []
+    wealth = []
+    income = []
+
+    edu.append(get_visconsumptie_persoonskenmerk(2018710))
+    edu.append(get_visconsumptie_persoonskenmerk(2018720))
+    edu.append(get_visconsumptie_persoonskenmerk(2018750))
+    edu.append(get_visconsumptie_persoonskenmerk(2018800))
+    edu.append(get_visconsumptie_persoonskenmerk(2018810))
+
+    wealth.append(get_visconsumptie_persoonskenmerk(1021200))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021210))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021220))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021230))
+    wealth.append(get_visconsumptie_persoonskenmerk(1021240))
+
+    income.append(get_visconsumptie_persoonskenmerk(1014752))
+    income.append(get_visconsumptie_persoonskenmerk(1014753))
+    income.append(get_visconsumptie_persoonskenmerk(1014754))
+    income.append(get_visconsumptie_persoonskenmerk(1014755))
+    income.append(get_visconsumptie_persoonskenmerk(1014756))
+
+    return [edu, wealth, income]
+
+
+def get_best_pearsonr(y_value_arrays):
+    x = [1, 2, 3, 4, 5]
+    # education, wealth, income
+    r_values = [pearsonr(x, y_value_arrays[0]), pearsonr(x, y_value_arrays[1]), pearsonr(x, y_value_arrays[2])]
+    max_idx = r_values.index(max(r_values))
+
+    if max_idx == 0:
+        return 'education'
+    if max_idx == 1:
+        return 'wealth'
+    if max_idx == 2:
+        return 'income'
+
+    return ''
